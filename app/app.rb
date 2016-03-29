@@ -2,18 +2,15 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
 require 'sinatra/flash'
+require 'sinatra/partial'
 require 'rubygems'
 require 'tilt/erb'
 require 'byebug'
 
 require_relative 'data_mapper_setup'
+require_relative 'server'
 
 class Chitter < Sinatra::Base
-  register Sinatra::Flash
-  use Rack::MethodOverride
-
-  enable :sessions
-  set :sessions_secret, 'woobly-doobly'
 
   get '/' do
     erb(:index)
@@ -54,7 +51,7 @@ class Chitter < Sinatra::Base
 
   post '/create_chits' do
     chit = Chit.create(chit_text: params[:chit_text],
-                       chit_time: Time.now.strftime("%d %b at %H:%M"), 
+                       chit_time: Time.now.strftime("%d %b at %H:%M"),
                        user_id: params[:user_id])
     chit.save
     redirect '/chits'
@@ -68,17 +65,11 @@ class Chitter < Sinatra::Base
   post '/create_reply' do
     reply = Reply.create(reply_text: params[:reply_text],
                          reply_time: Time.now.strftime("%d %b at %H:%M"),
-                         chit_id: params[:chit_id], 
+                         chit_id: params[:chit_id],
                          user_id: params[:user_id])
 
     reply.save
     redirect '/chits'
-  end
-
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
   end
 
   run! if app_file == 'app/app.rb'
