@@ -1,7 +1,15 @@
 <% if current_user %>
-  <%= partial :welcome %>
-  <%= partial :logout %>
-  <%= partial :chit_form %>
+  <%= partial :'partials/welcome' %>
+  <%= partial :'partials/log_out' %>
+  <%= partial :'partials/chit_form' %>
+<% else %>
+  <%= partial :'partials/sign_up_form' %>
+  <br>
+  <%= partial :'partials/log_in_form' %>
+<% end %>
+
+<% if %>
+<%= flash.now[:details_error] %>
 <% end %>
 
 <% if @chits %>

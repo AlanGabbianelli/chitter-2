@@ -9,7 +9,7 @@ class Chitter < Sinatra::Base
   set :partial_template_engine, :erb
 
   get '/' do
-    erb(:index)
+    redirect 'chits'
   end
 
   helpers do
