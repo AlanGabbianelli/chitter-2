@@ -4,7 +4,6 @@ class Chitter < Sinatra::Base
                          reply_time: Time.now.strftime("%d %b at %H:%M"),
                          chit_id: params[:chit_id],
                          user_id: params[:user_id])
-
     reply.save
     redirect '/chits'
   end
