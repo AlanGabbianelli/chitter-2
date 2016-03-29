@@ -13,12 +13,3 @@ require_relative 'controllers/user'
 require_relative 'controllers/chit'
 require_relative 'controllers/reply'
 require_relative 'controllers/session'
-
-class Chitter < Sinatra::Base
-
-  get '/' do
-    erb(:index)
-  end
-
-  run! if app_file == 'app/app.rb'
-end
