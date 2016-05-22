@@ -5,6 +5,15 @@
   </head>
   <body>
     <%= partial :'partials/flash' %>
+    <% if current_user %>
+      <%= partial :'partials/welcome' %>
+      <%= partial :'partials/log_out' %>
+      <%= partial :'partials/chit_form' %>
+    <% else %>
+      <%= partial :'partials/sign_up_form' %>
+      <%= partial :'partials/log_in_form' %>
+      <%= flash.now[:details_error] %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
