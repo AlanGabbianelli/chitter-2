@@ -1,0 +1,7 @@
+%section#log_in
+  %form{action: "/sessions" method: "post"}
+    %label{for: "username"}
+      %input{type: "text" name: "username" placeholder: "Username" required: true}
+    %label{for: "password"}
+      %input{type: "password" name: "password" placeholder: "Password" required: true}
+    %input{type: "submit" value: "Log in"}
