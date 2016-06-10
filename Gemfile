@@ -7,6 +7,7 @@ gem 'bcrypt'
 gem 'sinatra-flash'
 gem 'sinatra-partial'
 gem 'byebug'
+gem 'haml'
 
 group :test do
   gem 'database_cleaner'
