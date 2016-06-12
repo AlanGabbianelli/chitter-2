@@ -1,5 +1,5 @@
-%form{method: "post" action: "/create_chits"}
+%form{id: "chit_form", method: "post", action: "/create_chit"}
   %label{for: "chit_field"}
-    %input{type: "hidden" name: "user_id" value: "#{current_user.id}"}
-    %input{type: "text" name: "chit_text" placeholder: "Chit here!" required: true autofocus: true}
-    %input{type: "submit" value: "Chit!"}
+    %input{type: "hidden", name: "user_id", value: "#{current_user.id}"}
+    %input{type: "text", name: "chit_text", placeholder: "Chit here!", required: true, autofocus: true}
+    %input{type: "submit", value: "Chit!"}

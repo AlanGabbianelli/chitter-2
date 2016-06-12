@@ -1,0 +1,23 @@
+- if @chits
+  %section#chits_section
+    %h3 Chits:
+    - @chits.each do |chit|
+      %article#chit_and_reply
+        %div#chit
+          = chit.chit_text
+          = chit.chit_time
+          = chit.user.username
+        - if current_user
+          %form{id: "reply_form", method: "post", action: "/create_reply"}
+            %label{for: "reply_field"}
+              %input{type: "hidden", name: "user_id", value: "#{current_user.id}"}
+              %input{type: "hidden", name: "chit_id", value: "#{chit.id}"}
+              %input{type: "text", name: "reply_text", placeholder: "Reply to #{chit.user.username}", required: true}
+              %input{type: "submit", value: "Reply"}
+        - if chit.replies
+          - chit.replies.each do |reply|
+            #reply
+              = reply.reply_text
+              = reply.reply_time
+              = reply.user.username
+      %br

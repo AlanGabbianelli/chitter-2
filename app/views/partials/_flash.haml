@@ -2,8 +2,5 @@
   %ul#errors
     - flash[:errors].each do |error|
       %li= error
-    - end
-- end
 - if flash.now[:notice]
   = flash.now[:notice]
-- end

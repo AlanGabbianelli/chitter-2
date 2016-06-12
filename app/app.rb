@@ -6,6 +6,7 @@ require 'sinatra/partial'
 require 'rubygems'
 require 'tilt/erb'
 require 'byebug'
+require 'haml'
 
 require_relative 'data_mapper_setup'
 require_relative 'server'

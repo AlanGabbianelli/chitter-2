@@ -6,7 +6,7 @@ class Chitter < Sinatra::Base
   enable :sessions
   enable :partial_underscores
   set :sessions_secret, 'woobly-doobly'
-  set :partial_template_engine, :erb
+  set :partial_template_engine, :haml
 
   get '/' do
     redirect 'chits'

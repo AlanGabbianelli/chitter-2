@@ -1,5 +1,7 @@
+require 'haml'
+
 class Chitter < Sinatra::Base
-  post '/create_chits' do
+  post '/create_chit' do
     chit = Chit.create(chit_text: params[:chit_text],
                        chit_time: Time.now.strftime("%d %b at %H:%M"),
                        user_id: params[:user_id])
@@ -9,6 +11,6 @@ class Chitter < Sinatra::Base
 
   get '/chits' do
     @chits = Chit.all.reverse
-    erb(:chits)
+    haml :chits
   end
 end
