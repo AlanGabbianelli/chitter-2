@@ -42,7 +42,7 @@ module SessionHelpers
   end
 
   def first_chit
-    @first_time = Time.local(2008, 9, 1, 10, 5, 0).strftime("%d %b at %H:%M")
+    @first_time = Time.local(2008, 9, 1, 10, 5, 0).strftime("%d %b '%y at %H:%M")
     Timecop.freeze(Time.local(2008, 9, 1, 10, 5, 0))
     fill_in('chit_text', with: 'first chit')
     click_button('Chit!')
@@ -50,7 +50,7 @@ module SessionHelpers
   end
 
   def second_chit
-    @second_time = Time.local(2009, 4, 1, 11, 7, 0).strftime("%d %b at %H:%M")
+    @second_time = Time.local(2009, 4, 1, 11, 7, 0).strftime("%d %b '%y at %H:%M")
     Timecop.freeze(Time.local(2009, 4, 1, 11, 7, 0))
     fill_in('chit_text', with: 'second chit')
     click_button('Chit!')
